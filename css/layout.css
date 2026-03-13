@@ -1,1 +1,321 @@
+/* ═══════════ RESET & BASE ═══════════ */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
+html { height: 100% }
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--bg-1);
+    color: var(--tx-1);
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ═══════════ SIDEBAR ═══════════ */
+.sidebar {
+    width: 260px;
+    min-width: 260px;
+    height: 100vh;
+    background: var(--bg-2);
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    transition: transform .25s ease;
+    z-index: 100;
+}
+
+.sidebar.hide {
+    transform: translateX(-100%);
+    position: absolute;
+    pointer-events: none;
+}
+
+.s-head {
+    padding: 12px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.s-brand {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px;
+}
+
+.s-brand-icon {
+    width: 30px;
+    height: 30px;
+    background: linear-gradient(135deg, var(--accent), var(--green));
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.s-brand-text {
+    font-size: 15px;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--accent), var(--green));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.btn-new {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 9px;
+    background: var(--bg-3);
+    border: 1px solid var(--border-l);
+    border-radius: 8px;
+    color: var(--tx-1);
+    font-size: 13px;
+    cursor: pointer;
+    transition: .15s;
+}
+
+.btn-new:hover {
+    border-color: var(--accent);
+    background: var(--bg-4);
+}
+
+.s-search {
+    padding: 0 12px 6px;
+    position: relative;
+}
+
+.s-search input {
+    width: 100%;
+    background: var(--bg-3);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 6px 8px 6px 28px;
+    color: var(--tx-1);
+    font-size: 12px;
+    outline: none;
+    transition: .12s;
+    font-family: inherit;
+}
+
+.s-search input:focus {
+    border-color: var(--accent);
+}
+
+.s-search-icon {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--tx-3);
+    pointer-events: none;
+}
+
+.s-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 6px;
+}
+
+.s-group {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    color: var(--tx-3);
+    padding: 10px 8px 4px;
+}
+
+.s-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: .12s;
+    font-size: 13px;
+    color: var(--tx-2);
+}
+
+.s-item:hover { background: var(--bg-hover) }
+.s-item.act { background: var(--bg-4); color: var(--tx-1) }
+.s-item.pinned { border-left: 2px solid var(--accent); padding-left: 6px }
+
+.s-item-icon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    color: var(--tx-3);
+}
+
+.s-item-text {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.s-item-count {
+    font-size: 9px;
+    color: var(--tx-3);
+    min-width: 14px;
+    text-align: center;
+}
+
+.s-item-btns {
+    display: none;
+    gap: 2px;
+}
+
+.s-item:hover .s-item-btns { display: flex }
+.s-item:hover .s-item-count { display: none }
+
+.s-item-btn {
+    background: none;
+    border: none;
+    color: var(--tx-3);
+    cursor: pointer;
+    padding: 2px 3px;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+}
+
+.s-item-btn:hover { color: var(--tx-1); background: var(--bg-3) }
+.s-item-btn.del:hover { color: var(--red) }
+
+.s-empty {
+    text-align: center;
+    padding: 20px;
+    color: var(--tx-3);
+    font-size: 12px;
+}
+
+.s-foot {
+    padding: 8px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.s-foot-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: var(--tx-2);
+    font-size: 12px;
+    width: 100%;
+    text-align: left;
+    transition: .12s;
+}
+
+.s-foot-btn:hover { background: var(--bg-hover); color: var(--tx-1) }
+
+.s-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.5);
+    z-index: 90;
+}
+
+.s-overlay.show { display: block }
+
+/* ═══════════ MAIN ═══════════ */
+.main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    min-width: 0;
+}
+
+.m-head {
+    height: 50px;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 12px;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg-2);
+    gap: 8px;
+}
+
+.m-head-l, .m-head-r {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.icon-btn {
+    background: none;
+    border: none;
+    color: var(--tx-2);
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .12s;
+}
+
+.icon-btn:hover { background: var(--bg-hover); color: var(--tx-1) }
+
+.sel-wrap { position: relative }
+
+.sel-wrap select {
+    appearance: none;
+    background: var(--bg-3);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--tx-1);
+    font-size: 12px;
+    padding: 5px 24px 5px 8px;
+    cursor: pointer;
+    outline: none;
+    font-family: inherit;
+}
+
+.sel-wrap::after {
+    content: '▾';
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 9px;
+    color: var(--tx-3);
+    pointer-events: none;
+}
+
+/* ═══════════ RESPONSIVE ═══════════ */
+@media (max-width: 768px) {
+    .sidebar {
+        position: fixed;
+        left: 0;
+        top: 0;
+        height: 100vh;
+        z-index: 200;
+        box-shadow: 4px 0 20px rgba(0,0,0,.5);
+    }
+
+    .sidebar.hide { transform: translateX(-100%) }
+}
