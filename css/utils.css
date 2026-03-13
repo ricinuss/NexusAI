@@ -1,1 +1,48 @@
+/* ═══════════ SCROLLBAR ═══════════ */
+::-webkit-scrollbar { width: 5px }
+::-webkit-scrollbar-track { background: transparent }
+::-webkit-scrollbar-thumb { background: var(--border-l); border-radius: 3px }
 
+/* ═══════════ BADGES ═══════════ */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    padding: 2px 7px;
+    border-radius: 8px;
+    font-size: 10px;
+    font-weight: 500;
+}
+
+.badge.on { background: rgba(16,185,129,.12); color: var(--green) }
+.badge.off { background: rgba(239,68,68,.12); color: var(--red) }
+.badge-dot { width: 5px; height: 5px; border-radius: 50%; background: currentColor }
+
+/* ═══════════ TOAST ═══════════ */
+.toast-box {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    z-index: 2000;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.toast {
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 12px;
+    color: var(--tx-1);
+    box-shadow: 0 6px 20px rgba(0,0,0,.4);
+    animation: tIn .25s ease, tOut .25s ease 2.7s forwards;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    max-width: 320px;
+}
+
+@keyframes tIn { from { opacity: 0; transform: translateX(16px) } to { opacity: 1; transform: none } }
+@keyframes tOut { to { opacity: 0; transform: translateX(16px) } }
