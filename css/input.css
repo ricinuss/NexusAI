@@ -1,1 +1,130 @@
+/* ═══════════ INPUT AREA ═══════════ */
+.input-area {
+    padding: 12px;
+    display: flex;
+    justify-content: center;
+    background: var(--bg-1);
+}
 
+.input-wrap {
+    width: 100%;
+    max-width: 740px;
+}
+
+.input-box {
+    display: flex;
+    align-items: flex-end;
+    gap: 6px;
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 6px 10px;
+    transition: .15s;
+}
+
+.input-box:focus-within {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-g);
+}
+
+.input-box textarea {
+    flex: 1;
+    background: none;
+    border: none;
+    color: var(--tx-1);
+    font-size: 13.5px;
+    line-height: 1.5;
+    resize: none;
+    outline: none;
+    min-height: 22px;
+    max-height: 180px;
+    padding: 5px 0;
+    font-family: inherit;
+}
+
+.input-box textarea::placeholder { color: var(--tx-3) }
+
+.input-attach {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.btn-attach {
+    background: none;
+    border: none;
+    color: var(--tx-3);
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 5px;
+    transition: .12s;
+    display: flex;
+    align-items: center;
+}
+
+.btn-attach:hover { color: var(--tx-1); background: var(--bg-hover) }
+
+.btn-send {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 7px;
+    padding: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .12s;
+    flex-shrink: 0;
+}
+
+.btn-send:hover { background: var(--accent-h) }
+.btn-send:disabled { background: var(--bg-3); color: var(--tx-3); cursor: not-allowed }
+.btn-send.stop { background: var(--red) }
+.btn-send.stop:hover { background: #dc2626 }
+
+.input-foot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 6px;
+    font-size: 10px;
+    color: var(--tx-3);
+}
+
+.char-count { font-family: 'SF Mono', monospace }
+.char-count.warn { color: var(--yellow) }
+.char-count.over { color: var(--red) }
+
+/* ═══════════ ATTACHMENTS PREVIEW ═══════════ */
+.attach-preview {
+    display: flex;
+    gap: 6px;
+    padding: 6px 0;
+    flex-wrap: wrap;
+}
+
+.attach-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background: var(--bg-3);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 3px 8px;
+    font-size: 11px;
+    color: var(--tx-2);
+}
+
+.attach-rm {
+    background: none;
+    border: none;
+    color: var(--tx-3);
+    cursor: pointer;
+    font-size: 10px;
+    padding: 0 2px;
+    display: flex;
+    align-items: center;
+}
+
+.attach-rm:hover { color: var(--red) }
